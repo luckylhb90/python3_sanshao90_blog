@@ -16,13 +16,15 @@ class CommonField(models.Model):
     # 修改时间
     update_time = models.DateTimeField()
     # 创建人
-    create_user = models.OneToOneField(User,
-                                       related_name="%(app_label)s_%(class)s_create_user",
-                                       related_query_name="%(app_label)s_%(class)s_create_user", on_delete=models.DO_NOTHING)
+    create_user = models.ForeignKey(User,
+                                    related_name="%(app_label)s_%(class)s_create_user",
+                                    related_query_name="%(app_label)s_%(class)s_create_user",
+                                    on_delete=models.DO_NOTHING)
     # 修改人
-    update_user = models.OneToOneField(User,
-                                       related_name="%(app_label)s_%(class)s_update_user",
-                                       related_query_name="%(app_label)s_%(class)s_update_user", on_delete=models.DO_NOTHING)
+    update_user = models.ForeignKey(User,
+                                    related_name="%(app_label)s_%(class)s_update_user",
+                                    related_query_name="%(app_label)s_%(class)s_update_user",
+                                    on_delete=models.DO_NOTHING)
     # 备注
     remark = models.CharField(max_length=200, blank=True)
 
